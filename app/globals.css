@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-cormorant);
+  --color-brand-olive: #2f4a3b;
+  --color-brand-sage: #7e9272;
+  --color-brand-cream: #f5efe4;
+  --color-brand-ivory: #fcfaf6;
+  --color-brand-gold: #c7a46a;
+  --color-brand-clay: #a8724b;
+  --color-brand-cocoa: #70584a;
+  --color-brand-leaf: #dde5d6;
+  --color-brand-stone: #d8cfc2;
+  --color-brand-ink: #23322c;
+}
+
+:root {
+  --background: #fcfaf6;
+  --foreground: #23322c;
+  --muted: #6d746e;
+  --line: rgba(47, 74, 59, 0.12);
+  --line-strong: rgba(47, 74, 59, 0.22);
+  --shadow-soft: 0 28px 70px -34px rgba(46, 68, 56, 0.38);
+  --shadow-panel: 0 24px 60px -30px rgba(43, 55, 47, 0.24);
+}
+
+html {
+  scroll-behavior: smooth;
+  background:
+    radial-gradient(circle at top left, rgba(199, 164, 106, 0.14), transparent 30%),
+    radial-gradient(circle at top right, rgba(126, 146, 114, 0.18), transparent 28%),
+    var(--background);
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: clip;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(252, 250, 246, 0.98)),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-manrope), sans-serif;
+}
+
+::selection {
+  background: rgba(199, 164, 106, 0.32);
+  color: var(--foreground);
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-cormorant), serif;
+    letter-spacing: -0.03em;
+    color: var(--foreground);
+  }
+
+  p {
+    color: color-mix(in srgb, var(--foreground) 84%, white 16%);
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease,
+      box-shadow 180ms ease,
+      transform 180ms ease,
+      opacity 180ms ease;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid rgba(199, 164, 106, 0.75);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply relative py-20 md:py-28;
+  }
+
+  .section-anchor {
+    scroll-margin-top: 7rem;
+  }
+
+  .section-kicker {
+    @apply mb-4 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.28em];
+    color: color-mix(in srgb, var(--foreground) 72%, white 28%);
+    background: rgba(255, 255, 255, 0.5);
+    border-color: var(--line);
+  }
+
+  .section-title {
+    @apply text-4xl leading-none md:text-5xl xl:text-6xl;
+    text-wrap: balance;
+  }
+
+  .section-copy {
+    @apply mt-5 max-w-2xl text-base leading-8 md:text-lg;
+    text-wrap: pretty;
+    color: color-mix(in srgb, var(--foreground) 84%, white 16%);
+  }
+
+  .surface-panel {
+    @apply rounded-[28px] border backdrop-blur-md;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.54)),
+      rgba(255, 255, 255, 0.54);
+    box-shadow: var(--shadow-panel);
+    border-color: var(--line);
+  }
+
+  .soft-grid {
+    background-image:
+      linear-gradient(rgba(47, 74, 59, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(47, 74, 59, 0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .grain-overlay::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+    opacity: 0.06;
+    background-image:
+      radial-gradient(rgba(47, 74, 59, 0.3) 0.8px, transparent 0.8px),
+      radial-gradient(rgba(199, 164, 106, 0.24) 0.8px, transparent 0.8px);
+    background-position: 0 0, 12px 12px;
+    background-size: 24px 24px;
+  }
+
+  .rich-divider {
+    @apply h-px w-full;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(199, 164, 106, 0.45),
+      rgba(47, 74, 59, 0.18),
+      transparent
+    );
+  }
+}
+
+.text-display {
+  font-family: var(--font-cormorant), serif;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
