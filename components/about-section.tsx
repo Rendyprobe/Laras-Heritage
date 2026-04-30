@@ -48,54 +48,41 @@ export function AboutSection({ about }: AboutSectionProps) {
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-          <div className="mt-8 overflow-hidden rounded-2xl border border-brand-olive/10 bg-white/72 shadow-[0_24px_60px_-36px_rgba(35,50,44,0.36)]">
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[620px] border-collapse text-left text-sm">
-                <thead className="bg-brand-leaf/58 text-xs font-semibold uppercase tracking-[0.18em] text-brand-ink/68">
-                  <tr>
-                    <th scope="col" className="w-28 px-5 py-4">
-                      Foto
-                    </th>
-                    <th scope="col" className="px-5 py-4">
-                      Nama
-                    </th>
-                    <th scope="col" className="px-5 py-4">
-                      NIM
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-brand-olive/10">
-                  {groupMembers.map((member) => (
-                    <tr key={member.nim} className="text-brand-ink/78">
-                      <td className="px-5 py-4">
-                        <a
-                          href={member.photoUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="block h-16 w-16 overflow-hidden rounded-xl border border-brand-olive/12 bg-brand-leaf/45"
-                          aria-label={`Buka foto ${member.name}`}
-                        >
-                          <Image
-                            src={member.photoUrl}
-                            alt={`Foto ${member.name}`}
-                            width={64}
-                            height={64}
-                            className="h-full w-full object-cover"
-                          />
-                        </a>
-                      </td>
-                      <td className="px-5 py-4 font-semibold text-brand-ink">
-                        {member.name}
-                      </td>
-                      <td className="px-5 py-4 font-medium tabular-nums text-brand-ink/70">
-                        {member.nim}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+        </div>
+        <div className="mt-8 overflow-x-auto pb-3">
+          <div className="mx-auto flex w-max min-w-[760px] justify-center gap-5">
+            {groupMembers.map((member) => (
+              <article
+                key={member.nim}
+                className="relative flex min-h-56 w-[240px] flex-none flex-col items-center justify-center overflow-hidden rounded-2xl border border-brand-olive/12 bg-white/76 px-5 py-7 text-center shadow-[0_24px_62px_-38px_rgba(35,50,44,0.46)]"
+              >
+                <div className="absolute inset-0 bg-[linear-gradient(115deg,transparent_0%,transparent_36%,rgba(47,74,59,0.07)_48%,transparent_61%,transparent_100%)]" />
+                <a
+                  href={member.photoUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="relative block h-24 w-24 overflow-hidden rounded-full border-4 border-white bg-brand-leaf/55 shadow-[0_18px_38px_-24px_rgba(35,50,44,0.72)]"
+                  aria-label={`Buka foto ${member.name}`}
+                >
+                  <Image
+                    src={member.photoUrl}
+                    alt={`Foto ${member.name}`}
+                    width={96}
+                    height={96}
+                    className="h-full w-full object-cover"
+                  />
+                </a>
+                <h3 className="relative mt-5 font-sans text-sm font-bold leading-5 tracking-normal text-brand-ink">
+                  {member.name}
+                </h3>
+                <p className="relative mt-2 text-xs font-bold tabular-nums text-brand-clay">
+                  {member.nim}
+                </p>
+              </article>
+            ))}
           </div>
+        </div>
+        <div className="max-w-4xl">
           <div className="mt-8 flex flex-wrap gap-3">
             {about.principles.map((principle) => (
               <div
