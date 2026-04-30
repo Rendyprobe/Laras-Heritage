@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 type CommonProps = {
   children: ReactNode;
   className?: string;
-  variant?: "primary" | "secondary" | "ghost" | "accent";
+  variant?: "primary" | "secondary" | "ghost" | "accent" | "shopee";
   size?: "sm" | "md" | "lg";
 };
 
@@ -31,6 +31,8 @@ const variantClasses = {
     "bg-transparent text-brand-ink hover:bg-brand-olive/[0.06]",
   accent:
     "bg-brand-gold text-brand-ink hover:-translate-y-0.5 hover:bg-[#d2b17c] shadow-[0_22px_40px_-24px_rgba(199,164,106,0.72)]",
+  shopee:
+    "bg-[#ee4d2d] text-white hover:-translate-y-0.5 hover:bg-[#d93f20] shadow-[0_22px_40px_-24px_rgba(238,77,45,0.8)]",
 } as const;
 
 const sizeClasses = {

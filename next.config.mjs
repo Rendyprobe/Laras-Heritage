@@ -6,6 +6,7 @@ const __dirname = path.dirname(__filename);
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
+  devIndicators: false,
   experimental: {
     optimizePackageImports: ["lucide-react"],
   },
@@ -15,3 +16,5 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
+import('@opennextjs/cloudflare').then(m => m.initOpenNextCloudflareForDev());

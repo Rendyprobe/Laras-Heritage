@@ -5,43 +5,40 @@ import { useMemo, useState } from "react";
 import { Button } from "./ui/button";
 
 type ContactFormProps = {
-  email: string;
+  whatsappLink: string;
 };
 
 type FormState = {
   name: string;
-  email: string;
   interest: string;
   message: string;
 };
 
 const initialState: FormState = {
   name: "",
-  email: "",
   interest: "Info Produk",
   message: "",
 };
 
 type FormErrors = Partial<Record<keyof FormState, string>>;
 
-export function ContactForm({ email }: ContactFormProps) {
+export function ContactForm({ whatsappLink }: ContactFormProps) {
   const [values, setValues] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<"idle" | "success">("idle");
 
-  const mailtoLink = useMemo(() => {
-    const subject = `[Arunika Heritage] ${values.interest} - ${values.name || "Prospect"}`;
-    const body = [
-      `Nama: ${values.name}`,
-      `Email: ${values.email}`,
-      `Kebutuhan: ${values.interest}`,
+  const whatsappMessageLink = useMemo(() => {
+    const message = [
+      "Halo Laras Heritage, saya ingin menghubungi tim Anda.",
       "",
-      "Pesan:",
-      values.message,
+      `Nama: ${values.name || "-"}`,
+      `Kebutuhan: ${values.interest}`,
+      `Pesan: ${values.message || "-"}`,
     ].join("\n");
+    const separator = whatsappLink.includes("?") ? "&" : "?";
 
-    return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  }, [email, values.email, values.interest, values.message, values.name]);
+    return `${whatsappLink}${separator}text=${encodeURIComponent(message)}`;
+  }, [values.interest, values.message, values.name, whatsappLink]);
 
   const handleChange =
     (field: keyof FormState) =>
@@ -56,11 +53,6 @@ export function ContactForm({ email }: ContactFormProps) {
     const nextErrors: FormErrors = {};
 
     if (!values.name.trim()) nextErrors.name = "Nama wajib diisi.";
-    if (!values.email.trim()) {
-      nextErrors.email = "Email wajib diisi.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
-      nextErrors.email = "Format email belum valid.";
-    }
     if (!values.message.trim()) nextErrors.message = "Pesan wajib diisi.";
 
     setErrors(nextErrors);
@@ -74,7 +66,7 @@ export function ContactForm({ email }: ContactFormProps) {
     if (!validate()) return;
 
     setStatus("success");
-    window.location.href = mailtoLink;
+    window.open(whatsappMessageLink, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -95,34 +87,20 @@ export function ContactForm({ email }: ContactFormProps) {
         </label>
 
         <label className="grid gap-2">
-          <span className="text-sm font-semibold text-brand-ink">Email</span>
-          <input
-            type="email"
-            value={values.email}
-            onChange={handleChange("email")}
-            className="h-12 rounded-2xl border border-brand-olive/12 bg-white px-4 text-sm text-brand-ink placeholder:text-brand-ink/35"
-            placeholder="nama@email.com"
-          />
-          {errors.email ? (
-            <span className="text-sm text-[#A04E45]">{errors.email}</span>
-          ) : null}
+          <span className="text-sm font-semibold text-brand-ink">
+            Tipe kebutuhan
+          </span>
+          <select
+            value={values.interest}
+            onChange={handleChange("interest")}
+            className="h-12 rounded-2xl border border-brand-olive/12 bg-white px-4 text-sm text-brand-ink"
+          >
+            <option>Info Produk</option>
+            <option>Reseller</option>
+            <option>Investor / Strategic Partner</option>
+          </select>
         </label>
       </div>
-
-      <label className="grid gap-2">
-        <span className="text-sm font-semibold text-brand-ink">Tipe kebutuhan</span>
-        <select
-          value={values.interest}
-          onChange={handleChange("interest")}
-          className="h-12 rounded-2xl border border-brand-olive/12 bg-white px-4 text-sm text-brand-ink"
-        >
-          <option>Info Produk</option>
-          <option>Reseller</option>
-          <option>Distributor</option>
-          <option>Retail / Hospitality</option>
-          <option>Investor / Strategic Partner</option>
-        </select>
-      </label>
 
       <label className="grid gap-2">
         <span className="text-sm font-semibold text-brand-ink">Pesan</span>
@@ -140,20 +118,17 @@ export function ContactForm({ email }: ContactFormProps) {
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm leading-7 text-brand-ink/65">
-          Form ini akan menyiapkan draft email agar percakapan bisa langsung
-          diteruskan ke tim kami.
+          Pesan akan terbuka di WhatsApp dengan isi yang sudah tersusun.
         </p>
         <Button type="submit">
-          Kirim via Email
+          Kirim via WhatsApp
           <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
         </Button>
       </div>
 
       {status === "success" ? (
         <div className="rounded-[20px] border border-brand-olive/12 bg-brand-leaf/50 px-4 py-3 text-sm text-brand-ink/78">
-          Draft email berhasil disiapkan. Jika email client tidak terbuka
-          otomatis, Anda tetap dapat menghubungi kami lewat detail kontak di
-          samping.
+          WhatsApp sudah dibuka dengan pesan dari form.
         </div>
       ) : null}
     </form>

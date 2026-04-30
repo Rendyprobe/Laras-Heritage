@@ -16,33 +16,46 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://arunikaheritage.id"),
+  metadataBase: new URL("https://larasheritage.id"),
   title: {
-    default: "Arunika Heritage | Jamu Modern Premium dari Indonesia",
-    template: "%s | Arunika Heritage",
+    default: "Laras Heritage | Jamu Modern Premium dari Indonesia",
+    template: "%s | Laras Heritage",
   },
   description:
-    "Arunika Heritage menghadirkan jamu modern premium dengan bahan alami pilihan, formulasi yang relevan untuk gaya hidup masa kini, dan presentasi brand yang hangat, elegan, serta terpercaya.",
+    "Laras Heritage menghadirkan jamu modern premium dengan bahan alami pilihan, rasa tradisional yang diselaraskan untuk cita rasa modern, dan presentasi brand yang hangat, elegan, serta terpercaya.",
   keywords: [
     "jamu modern premium",
     "produk herbal alami Indonesia",
     "brand jamu modern",
     "wellness alami",
-    "distributor jamu premium",
+    "jamu herbal premium",
   ],
+  icons: {
+    icon: "/laras-heritage-logo.jpeg",
+    apple: "/laras-heritage-logo.jpeg",
+  },
   openGraph: {
-    title: "Arunika Heritage | Jamu Modern Premium dari Indonesia",
+    title: "Laras Heritage | Jamu Modern Premium dari Indonesia",
     description:
-      "Warisan alami yang diracik untuk hidup modern melalui koleksi herbal premium dengan rasa refined dan proses yang terjaga.",
-    siteName: "Arunika Heritage",
+      "Menyelaraskan rasa jamu tradisional dengan cita rasa modern melalui koleksi herbal premium dengan proses yang terjaga.",
+    siteName: "Laras Heritage",
     locale: "id_ID",
     type: "website",
+    images: [
+      {
+        url: "/laras-heritage-logo.jpeg",
+        width: 1254,
+        height: 1254,
+        alt: "Logo Laras Heritage",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arunika Heritage",
+    title: "Laras Heritage",
     description:
       "Jamu modern premium dari Indonesia dengan identitas visual yang elegan dan terpercaya.",
+    images: ["/laras-heritage-logo.jpeg"],
   },
 };
 

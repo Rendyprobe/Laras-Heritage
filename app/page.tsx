@@ -1,10 +1,10 @@
 import { AboutSection } from "@/components/about-section";
 import { ContactSection } from "@/components/contact-section";
 import { HeroSection } from "@/components/hero-section";
-import { PartnershipSection } from "@/components/partnership-section";
 import { ProductsSection } from "@/components/products-section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { TestimonialsSection } from "@/components/testimonials-section";
 import { siteContent } from "@/data/site-content";
 
 export default function Home() {
@@ -19,10 +19,7 @@ export default function Home() {
         />
         <ProductsSection products={siteContent.products} />
         <AboutSection about={siteContent.about} />
-        <PartnershipSection
-          partnership={siteContent.partnership}
-          links={siteContent.links}
-        />
+        <TestimonialsSection testimonials={siteContent.testimonials} />
         <ContactSection contact={siteContent.contact} />
       </main>
       <SiteFooter
