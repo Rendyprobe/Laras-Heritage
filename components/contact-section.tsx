@@ -14,7 +14,10 @@ type ContactSectionProps = {
 
 export function ContactSection({ contact }: ContactSectionProps) {
   return (
-    <section id="contact" className="section-anchor section-shell">
+    <section
+      id="contact"
+      className="section-anchor relative pb-10 pt-8 md:pb-12 md:pt-10"
+    >
       <Container>
         <div className="mx-auto max-w-4xl">
           <SectionHeading

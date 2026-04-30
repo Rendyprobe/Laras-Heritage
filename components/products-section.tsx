@@ -54,7 +54,10 @@ function ShopeeMark() {
 
 export function ProductsSection({ products }: ProductsSectionProps) {
   return (
-    <section id="products" className="section-anchor section-shell">
+    <section
+      id="products"
+      className="section-anchor relative pb-10 pt-8 md:pb-12 md:pt-10"
+    >
       <Container>
         <SectionHeading
           eyebrow="Varian Rasa"
@@ -62,7 +65,7 @@ export function ProductsSection({ products }: ProductsSectionProps) {
           description="Pilih varian jamu sesuai selera: hangat, segar, herbal madu citrus, atau creamy citrus."
         />
 
-        <div className="mt-12 grid gap-5 xl:grid-cols-2">
+        <div className="mt-8 grid gap-5 xl:grid-cols-2">
           {products.map((product) => (
             <SurfaceCard
               key={product.name}

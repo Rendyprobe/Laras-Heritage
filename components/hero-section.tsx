@@ -45,7 +45,7 @@ export function HeroSection({ brand, hero, links }: HeroSectionProps) {
   return (
     <section
       id="home"
-      className="section-anchor relative isolate overflow-hidden pb-16 pt-32 md:pb-20 md:pt-36"
+      className="section-anchor relative isolate overflow-hidden pb-6 pt-28 md:pb-8 md:pt-28"
     >
       <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_top_left,rgba(199,164,106,0.2),transparent_26%),radial-gradient(circle_at_80%_10%,rgba(126,146,114,0.18),transparent_26%),linear-gradient(180deg,rgba(252,250,246,0.98),rgba(245,239,228,0.65)_42%,rgba(252,250,246,1)_100%)]" />
       <div className="absolute inset-x-0 top-0 -z-10 h-[32rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.68),transparent)]" />
@@ -60,7 +60,7 @@ export function HeroSection({ brand, hero, links }: HeroSectionProps) {
               {hero.description}
             </p>
 
-            <div className="mt-8">
+            <div className="mt-6">
               <Button href={links.products} variant="secondary" size="lg">
                 {hero.secondaryCta}
                 <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
@@ -68,7 +68,7 @@ export function HeroSection({ brand, hero, links }: HeroSectionProps) {
             </div>
 
             {hero.trustBadges.length > 0 ? (
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-wrap gap-3">
                 {hero.trustBadges.map((badge) => (
                   <span
                     key={badge}
@@ -84,8 +84,8 @@ export function HeroSection({ brand, hero, links }: HeroSectionProps) {
               </div>
             ) : null}
 
-            <div className="mt-12 rich-divider max-w-2xl" />
-            <p className="mt-6 text-sm uppercase tracking-[0.24em] text-brand-ink/50">
+            <div className="mt-6 rich-divider max-w-2xl" />
+            <p className="mt-3 text-sm uppercase tracking-[0.24em] text-brand-ink/50">
               {brand.name} - {brand.tagline}
             </p>
           </div>

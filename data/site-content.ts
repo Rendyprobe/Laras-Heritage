@@ -94,31 +94,11 @@ export const siteContent = {
       "Usaha ini berpusat di Jl. Raya Maospati-Barat No. 358-360, Kelurahan Maospati, Kecamatan Maospati, Kabupaten Magetan, Jawa Timur. Dari daerah ini, kami ingin mengangkat potensi rempah lokal seperti jahe, kunyit, temulawak, gula aren, madu, dan lemon menjadi produk yang bernilai lebih tinggi.",
       "Pendekatan racikan kami menggabungkan tradisi dan formulasi modern: karakter jamu tetap dijaga, rasa dibuat lebih seimbang, rendah gula, tanpa pengawet, dan praktis diseduh dengan air hangat dalam waktu kurang dari satu menit.",
     ],
-    quote:
-      "Jamu modern praktis yang menjaga warisan Nusantara tetap hidup di keseharian generasi sekarang.",
     principles: [
       "Warisan jamu Nusantara",
       "Rasa lebih ramah di lidah",
       "Praktis siap seduh",
       "Berbasis potensi herbal Magetan",
-    ],
-    facts: [
-      {
-        label: "Asal brand",
-        value: "Inisiatif PMW UNESA 2026 dari tim mahasiswa.",
-      },
-      {
-        label: "Lokasi usaha",
-        value: "Maospati, Kabupaten Magetan, Jawa Timur.",
-      },
-      {
-        label: "Format produk",
-        value: "Jamu bubuk instan dalam kemasan standing pouch 500 gr.",
-      },
-      {
-        label: "Pendekatan rasa",
-        value: "Herbal fusion dengan varian modern yang tidak terlalu pahit.",
-      },
     ],
   },
   products: [

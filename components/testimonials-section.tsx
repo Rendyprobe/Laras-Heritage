@@ -24,7 +24,10 @@ export function TestimonialsSection({
   testimonials,
 }: TestimonialsSectionProps) {
   return (
-    <section id="testimonials" className="section-anchor section-shell">
+    <section
+      id="testimonials"
+      className="section-anchor relative pb-10 pt-6 md:pb-12 md:pt-8"
+    >
       <Container>
         <SectionHeading
           eyebrow={testimonials.eyebrow}
@@ -33,7 +36,7 @@ export function TestimonialsSection({
           align="center"
         />
 
-        <div className="mt-12 grid gap-4 xl:grid-cols-3">
+        <div className="mt-8 grid gap-4 xl:grid-cols-3">
           {testimonials.items.map((item) => (
             <SurfaceCard key={item.name} tone="muted" className="h-full p-7">
               <div className="flex items-center justify-between gap-4">

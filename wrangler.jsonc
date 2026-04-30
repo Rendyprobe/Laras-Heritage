@@ -2,6 +2,7 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"main": ".open-next/worker.js",
 	"name": "larasheritage",
+	"workers_dev": true,
 	"compatibility_date": "2026-04-20",
 	"compatibility_flags": [
 		"nodejs_compat",
@@ -11,6 +12,12 @@
 		"directory": ".open-next/assets",
 		"binding": "ASSETS"
 	},
+	"routes": [
+		{
+			"pattern": "www.larasheritage.web.id",
+			"custom_domain": true
+		}
+	],
 	"services": [
 		{
 			// Self-reference service binding, the service name must match the worker name

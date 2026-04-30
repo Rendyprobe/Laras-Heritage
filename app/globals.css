@@ -94,7 +94,7 @@ body {
 
 @layer components {
   .section-shell {
-    @apply relative py-20 md:py-28;
+    @apply relative py-10 md:py-12;
   }
 
   .section-anchor {
@@ -102,7 +102,7 @@ body {
   }
 
   .section-kicker {
-    @apply mb-4 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.28em];
+    @apply mb-3 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.28em];
     color: color-mix(in srgb, var(--foreground) 72%, white 28%);
     background: rgba(255, 255, 255, 0.5);
     border-color: var(--line);
@@ -114,7 +114,7 @@ body {
   }
 
   .section-copy {
-    @apply mt-5 max-w-2xl text-base leading-8 md:text-lg;
+    @apply mt-4 max-w-2xl text-base leading-8 md:text-lg;
     text-wrap: pretty;
     color: color-mix(in srgb, var(--foreground) 84%, white 16%);
   }
