@@ -1,9 +1,15 @@
 import { X } from "lucide-react";
 import { type NavItem } from "@/data/site-content";
 import { cn } from "@/lib/utils";
+import { BrandLogo } from "./brand-logo";
 
 type MobileNavProps = {
   open: boolean;
+  brand: {
+    name: string;
+    tagline: string;
+    logoSrc: string;
+  };
   activeId: string;
   navItems: readonly NavItem[];
   onNavigate: (id: string) => void;
@@ -12,6 +18,7 @@ type MobileNavProps = {
 
 export function MobileNav({
   open,
+  brand,
   activeId,
   navItems,
   onNavigate,
@@ -32,13 +39,21 @@ export function MobileNav({
         )}
       >
         <div className="mb-5 flex items-center justify-between">
-          <div>
-            <p className="text-display text-2xl font-semibold text-brand-ink">
-              Arunika Heritage
-            </p>
-            <p className="mt-1 text-sm text-brand-ink/70">
-              Premium herbal company profile
-            </p>
+          <div className="flex min-w-0 items-center gap-3">
+            <BrandLogo
+              src={brand.logoSrc}
+              alt={`Logo ${brand.name}`}
+              className="h-14 w-14"
+              sizes="56px"
+            />
+            <div className="min-w-0">
+              <p className="text-display text-2xl font-semibold text-brand-ink">
+                {brand.name}
+              </p>
+              <p className="mt-1 line-clamp-2 text-sm leading-5 text-brand-ink/70">
+                {brand.tagline}
+              </p>
+            </div>
           </div>
           <button
             type="button"

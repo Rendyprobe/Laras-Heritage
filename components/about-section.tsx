@@ -1,4 +1,4 @@
-import { CheckCircle2, Quote } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { Container } from "./ui/container";
 import { SectionHeading } from "./ui/section-heading";
 import { SurfaceCard } from "./ui/surface-card";
@@ -10,6 +10,10 @@ type AboutSectionProps = {
     paragraphs: readonly string[];
     quote: string;
     principles: readonly string[];
+    facts: readonly {
+      label: string;
+      value: string;
+    }[];
   };
 };
 
@@ -17,13 +21,18 @@ export function AboutSection({ about }: AboutSectionProps) {
   return (
     <section id="about" className="section-anchor section-shell">
       <Container>
-        <div className="grid gap-8 xl:grid-cols-[1.1fr_0.9fr]">
+        <div className="grid gap-8 xl:grid-cols-[1fr_0.82fr]">
           <div>
             <SectionHeading
               eyebrow={about.eyebrow}
               title={about.title}
               description={about.paragraphs[0]}
             />
+            <div className="mt-7 grid gap-5 text-base leading-8 text-brand-ink/74">
+              {about.paragraphs.slice(1).map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
             <div className="mt-8 flex flex-wrap gap-3">
               {about.principles.map((principle) => (
                 <div
@@ -41,28 +50,24 @@ export function AboutSection({ about }: AboutSectionProps) {
           </div>
 
           <div>
-            <SurfaceCard className="p-8 md:p-10">
-              <Quote className="h-8 w-8 text-brand-gold" aria-hidden="true" />
-              <p className="mt-5 max-w-2xl text-display text-3xl font-semibold leading-tight text-brand-ink md:text-4xl">
+            <SurfaceCard className="p-7 md:p-9">
+              <p className="max-w-2xl text-display text-4xl font-semibold leading-tight text-brand-ink md:text-5xl">
                 {about.quote}
               </p>
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-[24px] border border-brand-olive/10 bg-brand-cream/70 p-5">
-                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-brand-ink/52">
-                    Mood
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-brand-ink/76">
-                    Calm, editorial, and naturally premium.
-                  </p>
-                </div>
-                <div className="rounded-[24px] border border-brand-olive/10 bg-white/72 p-5">
-                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-brand-ink/52">
-                    Direction
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-brand-ink/76">
-                    Lebih banyak rasa percaya, lebih sedikit blok teks yang padat.
-                  </p>
-                </div>
+              <p className="mt-5 text-sm uppercase tracking-[0.22em] text-brand-ink/50">
+                Laras Heritage
+              </p>
+              <div className="mt-8 space-y-4 border-t border-brand-olive/10 pt-6">
+                {about.facts.map((fact) => (
+                  <div key={fact.label}>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-ink/45">
+                      {fact.label}
+                    </p>
+                    <p className="mt-1 text-sm leading-7 text-brand-ink/72">
+                      {fact.value}
+                    </p>
+                  </div>
+                ))}
               </div>
             </SurfaceCard>
           </div>

@@ -10,34 +10,39 @@ export type Product = {
   name: string;
   label: string;
   description: string;
+  imageSrc: string;
+  imageAlt: string;
   ingredients: string[];
   benefits: string[];
+  orderHref: string;
+  shopeeHref: string;
   tone: ProductTone;
 };
 
 export const siteContent = {
   brand: {
-    name: "Arunika Heritage",
-    tagline: "Warisan Alami, Diracik untuk Hidup Modern.",
+    name: "Laras Heritage",
+    tagline: "Menyelaraskan rasa jamu tradisional dengan cita rasa modern.",
+    logoSrc: "/laras-heritage-logo.jpeg",
     blurb:
-      "Jamu modern Indonesia yang mengangkat bahan botani pilihan melalui rasa yang lebih refined, presentasi yang elegan, dan kualitas yang siap dipercaya.",
+      "Jamu modern Indonesia yang menyelaraskan racikan tradisional, bahan botani pilihan, dan cita rasa yang lebih mudah dinikmati hari ini.",
   },
   navItems: [
     { id: "home", label: "Home", href: "#home" },
     { id: "products", label: "Koleksi", href: "#products" },
-    { id: "about", label: "Cerita", href: "#about" },
-    { id: "partnership", label: "Mitra", href: "#partnership" },
+    { id: "about", label: "About Us", href: "#about" },
+    { id: "testimonials", label: "Testimoni", href: "#testimonials" },
     { id: "contact", label: "Kontak", href: "#contact" },
   ] as NavItem[],
   links: {
     whatsapp:
-      "https://wa.me/6281290001848?text=Halo%20Arunika%20Heritage,%20saya%20ingin%20mengetahui%20produk%20Anda.",
+      "https://wa.me/6281770603717?text=Halo%20Laras%20Heritage,%20saya%20ingin%20mengetahui%20produk%20Anda.",
     partnerWhatsapp:
-      "https://wa.me/6281290001848?text=Halo%20Arunika%20Heritage,%20saya%20ingin%20mendiskusikan%20kemitraan%20reseller%20atau%20distributor.",
-    email: "mailto:hello@arunikaheritage.id",
+      "https://wa.me/6281770603717?text=Halo%20Laras%20Heritage,%20saya%20ingin%20mendiskusikan%20kemitraan%20reseller.",
+    email: "mailto:hello@larasheritage.id",
     phone: "tel:+622150981128",
     products: "#products",
-    partnership: "#partnership",
+    testimonials: "#testimonials",
     contact: "#contact",
   },
   hero: {
@@ -47,11 +52,7 @@ export const siteContent = {
     description:
       "Blend herbal premium dengan rasa yang lebih halus, presentasi yang lebih elegan, dan identitas yang relevan untuk gaya hidup masa kini.",
     secondaryCta: "Lihat Produk Unggulan",
-    trustBadges: [
-      "100% botanical-forward",
-      "crafted hygienically",
-      "ready for modern retail",
-    ],
+    trustBadges: [],
     notes: [],
   },
   trustItems: [
@@ -74,7 +75,7 @@ export const siteContent = {
   brandIntro: {
     eyebrow: "A new ritual for Indonesian wellness",
     title:
-      "Arunika Heritage mempertemukan warisan herbal Nusantara dengan ekspektasi gaya hidup modern.",
+      "Laras Heritage mempertemukan rasa jamu tradisional dengan ekspektasi gaya hidup modern.",
     description:
       "Kami percaya jamu tidak harus terasa kuno untuk tetap otentik. Melalui formulasi yang lebih terkurasi, struktur rasa yang lebih bersih, dan identitas visual yang lebih matang, kami menghadirkan pengalaman herbal yang terasa hangat, premium, dan relevan.",
     stats: [
@@ -84,54 +85,101 @@ export const siteContent = {
     ],
   },
   about: {
-    eyebrow: "Brand Story",
-    title: "Lebih sedikit penjelasan, lebih jelas pesan utamanya.",
+    eyebrow: "About Us",
+    title:
+      "Berawal dari Maospati, Laras Heritage membawa jamu Nusantara ke ritme hidup modern.",
     paragraphs: [
-      "Arunika Heritage lahir dari ide sederhana: jamu Indonesia layak tampil sekelas brand wellness modern. Kami mengambil bahan dan resep yang akrab, lalu meraciknya kembali dengan rasa yang lebih halus, bahasa brand yang lebih bersih, dan pengalaman yang lebih mudah dipercaya.",
+      "Jamu Laras Heritage lahir dari inisiatif wirausaha mahasiswa PMW UNESA 2026 dengan gagasan sederhana: menjaga warisan jamu Nusantara agar tetap relevan untuk generasi muda, pekerja muda, dan keluarga yang mencari alternatif minuman lebih sehat.",
+      "Kami melihat jamu tradisional sering dianggap pahit, memakan waktu untuk dibuat, dan kurang praktis untuk rutinitas cepat. Karena itu, Laras Heritage dikembangkan sebagai jamu bubuk instan siap seduh yang tetap bertumpu pada bahan herbal alami, tetapi hadir dengan rasa yang lebih ramah di lidah.",
+      "Usaha ini berpusat di Jl. Raya Maospati-Barat No. 358-360, Kelurahan Maospati, Kecamatan Maospati, Kabupaten Magetan, Jawa Timur. Dari daerah ini, kami ingin mengangkat potensi rempah lokal seperti jahe, kunyit, temulawak, gula aren, madu, dan lemon menjadi produk yang bernilai lebih tinggi.",
+      "Pendekatan racikan kami menggabungkan tradisi dan formulasi modern: karakter jamu tetap dijaga, rasa dibuat lebih seimbang, rendah gula, tanpa pengawet, dan praktis diseduh dengan air hangat dalam waktu kurang dari satu menit.",
     ],
     quote:
-      "Warisan herbal, dibawa ke bentuk yang lebih tenang, modern, dan layak hadir di keseharian urban.",
+      "Jamu modern praktis yang menjaga warisan Nusantara tetap hidup di keseharian generasi sekarang.",
     principles: [
-      "Heritage-led",
-      "Refined taste",
-      "Calm presentation",
+      "Warisan jamu Nusantara",
+      "Rasa lebih ramah di lidah",
+      "Praktis siap seduh",
+      "Berbasis potensi herbal Magetan",
+    ],
+    facts: [
+      {
+        label: "Asal brand",
+        value: "Inisiatif PMW UNESA 2026 dari tim mahasiswa.",
+      },
+      {
+        label: "Lokasi usaha",
+        value: "Maospati, Kabupaten Magetan, Jawa Timur.",
+      },
+      {
+        label: "Format produk",
+        value: "Jamu bubuk instan dalam kemasan standing pouch 500 gr.",
+      },
+      {
+        label: "Pendekatan rasa",
+        value: "Herbal fusion dengan varian modern yang tidak terlalu pahit.",
+      },
     ],
   },
   products: [
     {
-      name: "Svara Kunyit Asam",
-      label: "Revitalizing botanical tonic",
+      name: "Jahe Coklat",
+      label: "Hangat dan lembut",
       description:
-        "Kunyit asam dengan karakter yang cerah, ringan, dan mudah diminum kapan saja.",
-      ingredients: ["Kunyit", "Asam jawa", "Jeruk kasturi"],
-      benefits: ["Bright finish", "Afternoon ritual"],
+        "Perpaduan jahe dan coklat yang terasa hangat, creamy, dan nyaman diminum sebagai ritual harian.",
+      imageSrc: "/products/jahe-coklat.webp",
+      imageAlt: "Produk Jamu Laras Heritage varian Jahe Coklat",
+      ingredients: ["Jahe", "Coklat"],
+      benefits: ["Hangat", "Creamy", "Ramah di lidah"],
+      orderHref:
+        "https://wa.me/6281770603717?text=Halo%20Laras%20Heritage,%20saya%20ingin%20pesan%20varian%20Jahe%20Coklat.",
+      shopeeHref:
+        "https://shopee.co.id/search?keyword=jamu%20laras%20heritage%20jahe%20coklat",
       tone: "gold",
     },
     {
-      name: "Nara Ginger Lemongrass",
-      label: "Warming daily infusion",
+      name: "Sinom Lemon",
+      label: "Segar dan ringan",
       description:
-        "Jahe merah dan sereh untuk rasa hangat yang bersih dan menenangkan.",
-      ingredients: ["Jahe merah", "Sereh", "Madu hutan"],
-      benefits: ["Comforting warmth", "Morning ritual"],
+        "Rasa sinom yang lebih fresh dengan sentuhan lemon, cocok untuk pilihan jamu yang terasa cerah.",
+      imageSrc: "/products/sinom-lemon.webp",
+      imageAlt: "Produk Jamu Laras Heritage varian Sinom Lemon",
+      ingredients: ["Sinom", "Lemon"],
+      benefits: ["Fresh", "Citrus", "Ringan"],
+      orderHref:
+        "https://wa.me/6281770603717?text=Halo%20Laras%20Heritage,%20saya%20ingin%20pesan%20varian%20Sinom%20Lemon.",
+      shopeeHref:
+        "https://shopee.co.id/search?keyword=jamu%20laras%20heritage%20sinom%20lemon",
       tone: "sage",
     },
     {
-      name: "Ranum Temulawak Honey",
-      label: "Golden botanical blend",
+      name: "Temulawak Honey Lemon",
+      label: "Herbal madu citrus",
       description:
-        "Temulawak yang lebih halus, dengan lapisan madu lembut dan rasa yang kaya.",
-      ingredients: ["Temulawak", "Madu", "Kayu manis"],
-      benefits: ["Balanced profile", "Golden blend"],
+        "Temulawak yang dipadukan dengan madu dan lemon, menghadirkan karakter herbal yang hangat, segar, dan lebih mudah dinikmati.",
+      imageSrc: "/products/temulawak-honey-lemon.webp",
+      imageAlt: "Produk Jamu Laras Heritage varian Temulawak Honey Lemon",
+      ingredients: ["Temulawak", "Madu", "Lemon"],
+      benefits: ["Herbal", "Madu", "Citrus"],
+      orderHref:
+        "https://wa.me/6281770603717?text=Halo%20Laras%20Heritage,%20saya%20ingin%20pesan%20varian%20Temulawak%20Honey%20Lemon.",
+      shopeeHref:
+        "https://shopee.co.id/search?keyword=jamu%20laras%20heritage%20temulawak%20honey%20lemon",
       tone: "clay",
     },
     {
-      name: "Luma Digestive Elixir",
-      label: "Herbal digestive companion",
+      name: "Vanilla Lemon",
+      label: "Creamy citrus",
       description:
-        "Blend segar-rempah yang terasa ringan dan cocok dinikmati setelah makan.",
-      ingredients: ["Adas", "Kapulaga", "Daun mint"],
-      benefits: ["Fresh finish", "Post-meal"],
+        "Kombinasi vanilla dan lemon yang wangi, lembut, dan terasa modern tanpa meninggalkan karakter jamu.",
+      imageSrc: "/products/vanilla-lemon.webp",
+      imageAlt: "Produk Jamu Laras Heritage varian Vanilla Lemon",
+      ingredients: ["Vanilla", "Lemon"],
+      benefits: ["Aromatik", "Citrus", "Lembut"],
+      orderHref:
+        "https://wa.me/6281770603717?text=Halo%20Laras%20Heritage,%20saya%20ingin%20pesan%20varian%20Vanilla%20Lemon.",
+      shopeeHref:
+        "https://shopee.co.id/search?keyword=jamu%20laras%20heritage%20vanilla%20lemon",
       tone: "olive",
     },
   ] as Product[],
@@ -149,7 +197,7 @@ export const siteContent = {
     {
       title: "Brand language yang siap dibawa lebih jauh",
       description:
-        "Setiap titik sentuh - dari copy hingga tampilan - dibangun agar terlihat matang di hadapan customer, retail buyer, maupun strategic partner.",
+        "Setiap titik sentuh - dari copy hingga tampilan - dibangun agar terlihat matang di hadapan customer dan strategic partner.",
     },
     {
       title: "Wellness tanpa nuansa hard selling",
@@ -245,51 +293,47 @@ export const siteContent = {
     stats: [
       { value: "Botanical-first", label: "ingredient philosophy" },
       { value: "Modern", label: "formulation approach" },
-      { value: "Retail-ready", label: "partnership presentation" },
+      { value: "Customer-ready", label: "brand presentation" },
     ],
   },
   testimonials: {
-    eyebrow: "Social Proof",
-    title: "Dipercaya karena terasa matang, bukan karena berbicara terlalu keras.",
+    eyebrow: "Testimoni",
+    title: "Kesan mereka setelah mencoba Laras Heritage.",
     description:
-      "Respons awal yang kami cari selalu sama: rasa yang lebih mudah diterima, informasi yang lebih jelas, dan identitas brand yang cukup kuat untuk menumbuhkan keyakinan sejak perkenalan pertama.",
+      "Rasa jamu yang lebih ringan, praktis diseduh, dan tetap terasa alami untuk dinikmati sehari-hari.",
     items: [
       {
         quote:
-          "Saya dulu sulit menikmati jamu karena rasanya terlalu berat. Arunika terasa lebih halus, modern, dan tetap memberi kesan alami yang saya cari.",
-        name: "Nadia P.",
-        role: "Brand Consultant, Jakarta",
+          "Biasanya saya kurang cocok dengan jamu karena rasanya terlalu kuat. Laras Heritage lebih ringan dan aromanya enak.",
+        name: "Andika Pratama",
+        age: 19,
+        address: "Kec. Kartoharjo, Kota Madiun",
+        photoSrc: "/testimonials/andika-pratama.webp",
+        photoAlt: "Foto profil Andika Pratama",
       },
       {
         quote:
-          "Packaging dan presentasinya sangat meyakinkan. Saat saya tawarkan ke pelanggan toko, mereka langsung merasa ini produk herbal yang serius.",
-        name: "Rizky H.",
-        role: "Retail Partner, Bandung",
+          "Praktis banget tinggal seduh. Cocok diminum pagi sebelum mulai aktivitas, rasanya juga tidak bikin eneg.",
+        name: "Salsabila Putri",
+        age: 29,
+        address: "Kec. Mejayan, Kab. Madiun",
+        photoSrc: "/testimonials/salsabila-putri.webp",
+        photoAlt: "Foto profil Salsabila Putri",
       },
       {
         quote:
-          "Saya suka karena informasinya jelas, bahannya familiar, dan rasanya tidak terasa seperti produk herbal yang kuno.",
-        name: "Maya S.",
-        role: "Ibu Rumah Tangga, Tangerang",
+          "Jahe coklatnya unik, hangat, tapi tetap nyaman diminum. Rasanya modern tanpa menghilangkan karakter jamunya.",
+        name: "Budi Santoso",
+        age: 41,
+        address: "Kec. Maospati, Kab. Magetan",
+        photoSrc: "/testimonials/budi-santoso.webp",
+        photoAlt: "Foto profil Budi Santoso",
       },
     ],
-  },
-  partnership: {
-    eyebrow: "Reseller / Distributor",
-    title: "Untuk partner yang mencari brand herbal dengan presentasi yang sudah matang.",
-    description:
-      "Arunika dirancang agar mudah dibawa ke retail modern, hospitality, dan kanal distribusi yang membutuhkan brand lokal dengan positioning yang jelas.",
-    bullets: [
-      "Positioning premium yang mudah dipresentasikan",
-      "Narasi produk ringkas dan mudah dipahami buyer",
-      "Visual identity yang siap dipakai di channel modern",
-    ],
-    primaryCta: "Jadi Mitra Arunika",
-    secondaryCta: "Email Partnership",
   },
   faqs: [
     {
-      question: "Apakah Arunika Heritage menggunakan bahan alami?",
+      question: "Apakah Laras Heritage menggunakan bahan alami?",
       answer:
         "Ya. Kami mengutamakan bahan botani yang akrab dalam tradisi herbal Indonesia dan meraciknya dengan pendekatan yang lebih modern serta lebih terkurasi.",
     },
@@ -309,26 +353,29 @@ export const siteContent = {
         "Anda dapat mulai dari kebutuhan utama Anda, seperti ritual pagi yang menghangatkan, pendamping setelah makan, atau minuman herbal dengan rasa yang lebih segar.",
     },
     {
-      question: "Apakah tersedia program reseller atau distributor?",
+      question: "Apakah tersedia program reseller?",
       answer:
-        "Tersedia. Kami membuka peluang kemitraan untuk reseller, distributor regional, dan partner retail yang sejalan dengan positioning brand.",
+        "Tersedia. Kami membuka peluang kemitraan untuk reseller dan partner strategis yang sejalan dengan positioning brand.",
     },
   ],
   contact: {
     eyebrow: "Kontak",
-    title: "Satu tempat untuk bertanya, mengenal produk, atau memulai kemitraan.",
+    title: "Kirim pesan ke Laras Heritage.",
     description:
-      "Jika Anda ingin mengenal produk lebih dekat atau membicarakan peluang kerja sama, tim kami siap membantu dengan jalur kontak yang sederhana dan jelas.",
-    addressName: "Arunika Heritage Studio",
+      "Isi form singkat ini, lalu pesan akan langsung siap dikirim melalui WhatsApp.",
+    addressName: "Laras Heritage Studio",
     addressLines: [
-      "Jl. Senopati No. 18, Kebayoran Baru",
-      "Jakarta Selatan 12190",
+      "Jl. Raya Maospati-Barat No. 358-360,",
+      "Kelurahan Maospati, Kecamatan Maospati,",
+      "Kabupaten Magetan, Jawa Timur 63392",
     ],
-    email: "hello@arunikaheritage.id",
-    phoneDisplay: "+62 21 5098 1128",
-    phoneLink: "+622150981128",
-    whatsappDisplay: "+62 812 9000 1848",
-    whatsappLink: "https://wa.me/6281290001848",
-    hours: "Senin - Jumat, 09.00 - 18.00 WIB",
+    email: "hello@larasheritage.id",
+    phoneDisplay: "+62 817 7060 3717",
+    phoneLink: "+6281770603717",
+    whatsappDisplay: "+62 817 7060 3717",
+    whatsappLink: "https://wa.me/6281770603717",
+    instagramDisplay: "@larasheritagejamu.official",
+    instagramLink: "https://www.instagram.com/larasheritagejamu.official",
+    hours: "Buka order pembelian setiap hari, 07.00 - 22.00 WIB",
   },
 } as const;

@@ -4,6 +4,7 @@ import { Menu } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { type NavItem } from "@/data/site-content";
 import { cn } from "@/lib/utils";
+import { BrandLogo } from "./brand-logo";
 import { MobileNav } from "./mobile-nav";
 import { Container } from "./ui/container";
 
@@ -11,21 +12,14 @@ type SiteHeaderProps = {
   brand: {
     name: string;
     tagline: string;
+    logoSrc: string;
   };
   navItems: readonly NavItem[];
 };
 
 export function SiteHeader({ brand, navItems }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeId, setActiveId] = useState(() => {
-    if (typeof window === "undefined") {
-      return "home";
-    }
-
-    const hashId = window.location.hash.replace("#", "");
-
-    return navItems.some((item) => item.id === hashId) ? hashId : "home";
-  });
+  const [activeId, setActiveId] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
 
   const sectionIds = useMemo(() => navItems.map((item) => item.id), [navItems]);
@@ -112,9 +106,12 @@ export function SiteHeader({ brand, navItems }: SiteHeaderProps) {
               onClick={() => handleNavigate("home")}
               className="flex min-w-0 items-center gap-3"
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-full border border-brand-olive/10 bg-white/80 text-display text-xl font-semibold text-brand-olive">
-                AH
-              </div>
+              <BrandLogo
+                src={brand.logoSrc}
+                alt={`Logo ${brand.name}`}
+                className="h-12 w-12"
+                priority
+              />
               <div className="min-w-0">
                 <p className="truncate text-sm font-semibold tracking-[0.02em] text-brand-ink">
                   {brand.name}
@@ -173,6 +170,7 @@ export function SiteHeader({ brand, navItems }: SiteHeaderProps) {
       <div id="mobile-menu">
         <MobileNav
           open={menuOpen}
+          brand={brand}
           activeId={activeId}
           navItems={navItems}
           onNavigate={handleNavigate}

@@ -33,9 +33,8 @@ export function FaqSection({ faqs, links }: FaqSectionProps) {
                 Masih butuh percakapan langsung?
               </p>
               <p className="mt-4 text-base leading-8 text-brand-ink/74">
-                Jika Anda ingin mendiskusikan produk, retail fit, atau peluang
-                kemitraan, kami menyiapkan jalur kontak yang cepat dan rendah
-                friksi.
+                Jika Anda ingin mendiskusikan produk atau peluang kemitraan,
+                kami menyiapkan jalur kontak yang cepat dan rendah friksi.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row xl:flex-col">
                 <Button href={links.whatsapp} target="_blank" rel="noreferrer">

@@ -10,7 +10,7 @@ type ClosingCtaProps = {
   };
   links: {
     whatsapp: string;
-    partnership: string;
+    testimonials: string;
   };
 };
 
@@ -39,11 +39,11 @@ export function ClosingCta({ brand, links }: ClosingCtaProps) {
             </div>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Button href={links.whatsapp} target="_blank" rel="noreferrer">
-                Hubungi Arunika
+                Hubungi Laras
                 <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </Button>
-              <Button href={links.partnership} variant="secondary">
-                Lihat Program Mitra
+              <Button href={links.testimonials} variant="secondary">
+                Lihat Testimoni
               </Button>
             </div>
           </div>

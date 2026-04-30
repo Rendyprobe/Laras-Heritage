@@ -19,7 +19,7 @@ export function ValuePillarsSection({ pillars }: ValuePillarsSectionProps) {
         <SectionHeading
           eyebrow="Why Choose Us"
           title="Alasan yang terasa emosional sekaligus rasional."
-          description="Website ini perlu membuat brand terlihat menarik, tetapi ketertarikan saja tidak cukup. Karena itu, diferensiasi Arunika dibangun dari kombinasi heritage, rasa, presentasi, dan kesiapan untuk dibawa ke kanal yang lebih luas."
+          description="Website ini perlu membuat brand terlihat menarik, tetapi ketertarikan saja tidak cukup. Karena itu, diferensiasi Laras Heritage dibangun dari kombinasi heritage, rasa, presentasi, dan kesiapan untuk dibawa ke kanal yang lebih luas."
         />
 
         <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">

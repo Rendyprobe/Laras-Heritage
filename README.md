@@ -1,6 +1,6 @@
-# Arunika Heritage Site
+# Laras Heritage Site
 
-Website company profile premium untuk `Arunika Heritage`, brand jamu modern Indonesia dengan pendekatan visual editorial, earthy luxury palette, dan arsitektur `Next.js + TypeScript + Tailwind CSS`.
+Website company profile premium untuk `Laras Heritage`, brand jamu modern Indonesia dengan pendekatan visual editorial, earthy luxury palette, dan arsitektur `Next.js + TypeScript + Tailwind CSS`.
 
 ## Stack
 
