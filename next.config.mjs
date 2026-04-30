@@ -7,6 +7,15 @@ const __dirname = path.dirname(__filename);
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   devIndicators: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "siakadu.unesa.ac.id",
+        pathname: "/photo/fotomhs/**",
+      },
+    ],
+  },
   experimental: {
     optimizePackageImports: ["lucide-react"],
   },
