@@ -62,7 +62,7 @@ export function ProductsSection({ products }: ProductsSectionProps) {
         <SectionHeading
           eyebrow="Varian Rasa"
           title="Empat rasa Laras Heritage yang siap dipesan."
-          description="Pilih varian jamu sesuai selera: hangat, segar, herbal madu citrus, atau creamy citrus."
+          description="Pilih varian jamu sesuai selera: hangat, segar, herbal madu citrus, atau beras kencur caramel."
         />
 
         <div className="mt-8 grid gap-5 xl:grid-cols-2">

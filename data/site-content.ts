@@ -148,18 +148,18 @@ export const siteContent = {
       tone: "clay",
     },
     {
-      name: "Vanilla Lemon",
-      label: "Creamy citrus",
+      name: "Beras Kencur Caramel",
+      label: "Klasik dan creamy",
       description:
-        "Kombinasi vanilla dan lemon yang wangi, lembut, dan terasa modern tanpa meninggalkan karakter jamu.",
-      imageSrc: "/products/vanilla-lemon.webp",
-      imageAlt: "Produk Jamu Laras Heritage varian Vanilla Lemon",
-      ingredients: ["Vanilla", "Lemon"],
-      benefits: ["Aromatik", "Citrus", "Lembut"],
+        "Beras kencur klasik dengan sentuhan caramel yang lembut, menghadirkan rasa gurih manis, creamy, dan tetap khas jamu Nusantara.",
+      imageSrc: "/products/beras-kencur-caramel.webp",
+      imageAlt: "Produk Jamu Laras Heritage varian Beras Kencur Caramel",
+      ingredients: ["Beras", "Kencur", "Caramel"],
+      benefits: ["Klasik", "Creamy", "Gurih manis"],
       orderHref:
-        "https://wa.me/6281770603717?text=Halo%20Laras%20Heritage,%20saya%20ingin%20pesan%20varian%20Vanilla%20Lemon.",
+        "https://wa.me/6281770603717?text=Halo%20Laras%20Heritage,%20saya%20ingin%20pesan%20varian%20Beras%20Kencur%20Caramel.",
       shopeeHref:
-        "https://shopee.co.id/search?keyword=jamu%20laras%20heritage%20vanilla%20lemon",
+        "https://shopee.co.id/search?keyword=jamu%20laras%20heritage%20beras%20kencur%20caramel",
       tone: "olive",
     },
   ] as Product[],
