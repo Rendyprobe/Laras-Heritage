@@ -30,10 +30,11 @@ export function IngredientsSection({ ingredients }: IngredientsSectionProps) {
 
           <SurfaceCard className="overflow-hidden p-6 md:p-8">
             <div className="grid gap-4 md:grid-cols-2">
-              {ingredients.items.map((item) => (
+              {ingredients.items.map((item, index) => (
                 <div
                   key={item.name}
-                  className="rounded-[24px] border border-white/55 bg-white/72 p-5"
+                  data-reveal-text={String((index % 4) + 1)}
+                  className="rounded-[24px] border border-brand-surface/55 bg-brand-surface/72 p-5"
                 >
                   <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-leaf text-brand-olive">
                     <Leaf className="h-5 w-5" aria-hidden="true" />

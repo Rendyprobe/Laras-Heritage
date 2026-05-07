@@ -6,6 +6,7 @@ import {
   MessageCircle,
   PhoneCall,
 } from "lucide-react";
+import Link from "next/link";
 import { BrandLogo } from "./brand-logo";
 import { Container } from "./ui/container";
 
@@ -38,40 +39,46 @@ export function SiteFooter({ brand, navItems, contact }: SiteFooterProps) {
   return (
     <footer className="mt-8 bg-brand-olive text-white">
       <Container className="grid gap-10 py-12 lg:grid-cols-[1.05fr_0.7fr_0.85fr_0.95fr]">
-        <div>
+        <div data-reveal="fade-up">
           <BrandLogo
             src={brand.logoSrc}
             alt={`Logo ${brand.name}`}
             className="h-16 w-16 border-white/20"
             sizes="64px"
           />
-          <h2 className="mt-5 text-display text-4xl font-semibold leading-none text-white">
+          <h2
+            data-reveal-text="1"
+            className="mt-5 text-display text-4xl font-semibold leading-none text-white"
+          >
             {brand.name}
           </h2>
-          <p className="mt-4 max-w-md text-sm leading-7 text-white/72">
+          <p
+            data-reveal-text="2"
+            className="mt-4 max-w-md text-sm leading-7 text-white/72"
+          >
             {brand.blurb}
           </p>
         </div>
 
-        <div>
+        <div data-reveal="fade-up" data-reveal-delay="1">
           <p className="text-sm uppercase tracking-[0.22em] text-white/48">
             Navigasi
           </p>
           <ul className="mt-5 space-y-3">
             {navItems.map((item) => (
               <li key={item.id}>
-                <a
+                <Link
                   href={item.href}
                   className="text-sm leading-7 text-white/74 hover:text-brand-gold"
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
         </div>
 
-        <div>
+        <div data-reveal="fade-up" data-reveal-delay="2">
           <p className="text-sm uppercase tracking-[0.22em] text-white/48">
             Kontak
           </p>
@@ -131,7 +138,7 @@ export function SiteFooter({ brand, navItems, contact }: SiteFooterProps) {
           </ul>
         </div>
 
-        <div>
+        <div data-reveal="fade-up" data-reveal-delay="3">
           <p className="text-sm uppercase tracking-[0.22em] text-white/48">
             Alamat
           </p>

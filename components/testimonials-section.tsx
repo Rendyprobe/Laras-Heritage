@@ -18,10 +18,12 @@ type TestimonialsSectionProps = {
       photoAlt: string;
     }[];
   };
+  showHeading?: boolean;
 };
 
 export function TestimonialsSection({
   testimonials,
+  showHeading = true,
 }: TestimonialsSectionProps) {
   return (
     <section
@@ -29,18 +31,31 @@ export function TestimonialsSection({
       className="section-anchor relative pb-10 pt-6 md:pb-12 md:pt-8"
     >
       <Container>
-        <SectionHeading
-          eyebrow={testimonials.eyebrow}
-          title={testimonials.title}
-          description={testimonials.description}
-          align="center"
-        />
+        {showHeading ? (
+          <SectionHeading
+            eyebrow={testimonials.eyebrow}
+            title={testimonials.title}
+            description={testimonials.description}
+            align="center"
+          />
+        ) : null}
 
-        <div className="mt-8 grid gap-4 xl:grid-cols-3">
-          {testimonials.items.map((item) => (
-            <SurfaceCard key={item.name} tone="muted" className="h-full p-7">
+        <div
+          className={
+            showHeading
+              ? "mt-8 grid gap-4 xl:grid-cols-3"
+              : "grid gap-4 xl:grid-cols-3"
+          }
+        >
+          {testimonials.items.map((item, index) => (
+            <SurfaceCard
+              key={item.name}
+              tone="muted"
+              data-reveal-delay={String(index + 1)}
+              className="h-full p-7"
+            >
               <div className="flex items-center justify-between gap-4">
-                <div className="relative h-16 w-16 flex-none overflow-hidden rounded-full border border-white/70 bg-brand-cream shadow-[0_18px_34px_-24px_rgba(35,50,44,0.5)]">
+                <div className="relative h-16 w-16 flex-none overflow-hidden rounded-full border border-brand-surface/70 bg-brand-cream shadow-[0_18px_34px_-24px_rgba(35,50,44,0.5)]">
                   <Image
                     src={item.photoSrc}
                     alt={item.photoAlt}
@@ -54,10 +69,13 @@ export function TestimonialsSection({
                   aria-hidden="true"
                 />
               </div>
-              <p className="mt-5 text-xl font-semibold leading-8 text-brand-ink">
+              <p
+                data-reveal-text="1"
+                className="mt-5 text-xl font-semibold leading-8 text-brand-ink"
+              >
                 &ldquo;{item.quote}&rdquo;
               </p>
-              <div className="mt-8">
+              <div data-reveal-text="2" className="mt-8">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-ink/56">
                   {item.name}
                 </p>

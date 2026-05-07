@@ -10,9 +10,13 @@ type ContactSectionProps = {
     description: string;
     whatsappLink: string;
   };
+  showHeading?: boolean;
 };
 
-export function ContactSection({ contact }: ContactSectionProps) {
+export function ContactSection({
+  contact,
+  showHeading = true,
+}: ContactSectionProps) {
   return (
     <section
       id="contact"
@@ -20,13 +24,15 @@ export function ContactSection({ contact }: ContactSectionProps) {
     >
       <Container>
         <div className="mx-auto max-w-4xl">
-          <SectionHeading
-            eyebrow={contact.eyebrow}
-            title={contact.title}
-            description={contact.description}
-          />
+          {showHeading ? (
+            <SectionHeading
+              eyebrow={contact.eyebrow}
+              title={contact.title}
+              description={contact.description}
+            />
+          ) : null}
 
-          <SurfaceCard className="mt-8 p-6 md:p-8">
+          <SurfaceCard className={showHeading ? "mt-8 p-6 md:p-8" : "p-6 md:p-8"}>
             <ContactForm whatsappLink={contact.whatsappLink} />
           </SurfaceCard>
         </div>

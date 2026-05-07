@@ -1,7 +1,7 @@
 export type NavItem = {
   id: string;
   label: string;
-  href: `#${string}`;
+  href: string;
 };
 
 type ProductTone = "gold" | "sage" | "clay" | "olive";
@@ -28,11 +28,11 @@ export const siteContent = {
       "Jamu modern Indonesia yang menyelaraskan racikan tradisional, bahan botani pilihan, dan cita rasa yang lebih mudah dinikmati hari ini.",
   },
   navItems: [
-    { id: "home", label: "Home", href: "#home" },
-    { id: "products", label: "Koleksi", href: "#products" },
-    { id: "about", label: "About Us", href: "#about" },
-    { id: "testimonials", label: "Testimoni", href: "#testimonials" },
-    { id: "contact", label: "Kontak", href: "#contact" },
+    { id: "home", label: "Home", href: "/" },
+    { id: "products", label: "Koleksi", href: "/koleksi" },
+    { id: "about", label: "About Us", href: "/about" },
+    { id: "testimonials", label: "Testimoni", href: "/testimoni" },
+    { id: "contact", label: "Kontak", href: "/kontak" },
   ] as NavItem[],
   links: {
     whatsapp:
@@ -41,9 +41,9 @@ export const siteContent = {
       "https://wa.me/6281770603717?text=Halo%20Laras%20Heritage,%20saya%20ingin%20mendiskusikan%20kemitraan%20reseller.",
     email: "mailto:hello@larasheritage.id",
     phone: "tel:+622150981128",
-    products: "#products",
-    testimonials: "#testimonials",
-    contact: "#contact",
+    products: "/koleksi",
+    testimonials: "/testimoni",
+    contact: "/kontak",
   },
   hero: {
     eyebrow: "Modern Herbal Wellness Brand",

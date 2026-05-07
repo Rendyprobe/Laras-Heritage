@@ -1,11 +1,14 @@
 "use client";
 
 import { Menu } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { type NavItem } from "@/data/site-content";
 import { cn } from "@/lib/utils";
 import { BrandLogo } from "./brand-logo";
 import { MobileNav } from "./mobile-nav";
+import { ThemeToggle } from "./theme-toggle";
 import { Container } from "./ui/container";
 
 type SiteHeaderProps = {
@@ -19,67 +22,39 @@ type SiteHeaderProps = {
 
 export function SiteHeader({ brand, navItems }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeId, setActiveId] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
-  const sectionIds = useMemo(() => navItems.map((item) => item.id), [navItems]);
+  const activeId = useMemo(() => {
+    const activeItem = navItems.find((item) => {
+      if (item.href === "/") {
+        return pathname === "/";
+      }
 
-  const handleNavigate = (id: string) => {
-    setActiveId(id);
+      return pathname === item.href || pathname.startsWith(`${item.href}/`);
+    });
+
+    return activeItem?.id ?? "home";
+  }, [navItems, pathname]);
+
+  const handleNavigate = () => {
     setMenuOpen(false);
   };
 
   useEffect(() => {
     const updateHeaderState = () => {
       setIsScrolled(window.scrollY > 12);
-
-      const sections = sectionIds
-        .map((id) => document.getElementById(id))
-        .filter((section): section is HTMLElement => Boolean(section));
-
-      if (sections.length === 0) {
-        return;
-      }
-
-      const marker = window.scrollY + 140;
-      const isNearBottom =
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 8;
-
-      let nextActiveId = sections[0].id;
-
-      for (const section of sections) {
-        if (marker >= section.offsetTop) {
-          nextActiveId = section.id;
-        }
-      }
-
-      if (isNearBottom) {
-        nextActiveId = sections.at(-1)?.id ?? nextActiveId;
-      }
-
-      setActiveId((current) =>
-        current === nextActiveId ? current : nextActiveId,
-      );
-    };
-
-    const handleHashChange = () => {
-      const hashId = window.location.hash.replace("#", "");
-
-      setActiveId(hashId && sectionIds.includes(hashId) ? hashId : "home");
     };
 
     updateHeaderState();
     window.addEventListener("scroll", updateHeaderState, { passive: true });
     window.addEventListener("resize", updateHeaderState);
-    window.addEventListener("hashchange", handleHashChange);
 
     return () => {
       window.removeEventListener("scroll", updateHeaderState);
       window.removeEventListener("resize", updateHeaderState);
-      window.removeEventListener("hashchange", handleHashChange);
     };
-  }, [sectionIds]);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -91,19 +66,19 @@ export function SiteHeader({ brand, navItems }: SiteHeaderProps) {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-30 pt-4">
+      <header className="site-header-shell fixed inset-x-0 top-0 z-30 pt-4">
         <Container>
           <div
             className={cn(
               "mx-auto flex items-center justify-between rounded-full border px-3 py-3 md:px-4",
               isScrolled
-                ? "border-white/70 bg-brand-ivory/82 shadow-[0_18px_40px_-28px_rgba(35,50,44,0.4)] backdrop-blur-md"
-                : "border-white/45 bg-white/58 backdrop-blur-sm",
+                ? "border-brand-surface/70 bg-brand-ivory/82 shadow-[0_18px_40px_-28px_rgba(35,50,44,0.4)] backdrop-blur-md"
+                : "border-brand-surface/45 bg-brand-surface/58 backdrop-blur-sm",
             )}
           >
-            <a
-              href="#home"
-              onClick={() => handleNavigate("home")}
+            <Link
+              href="/"
+              onClick={handleNavigate}
               className="flex min-w-0 items-center gap-3"
             >
               <BrandLogo
@@ -120,7 +95,7 @@ export function SiteHeader({ brand, navItems }: SiteHeaderProps) {
                   {brand.tagline}
                 </p>
               </div>
-            </a>
+            </Link>
 
             <nav className="hidden lg:block" aria-label="Primary navigation">
               <ul className="flex items-center gap-2">
@@ -129,9 +104,9 @@ export function SiteHeader({ brand, navItems }: SiteHeaderProps) {
 
                   return (
                     <li key={item.id}>
-                      <a
+                      <Link
                         href={item.href}
-                        onClick={() => handleNavigate(item.id)}
+                        onClick={handleNavigate}
                         className={cn(
                           "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium",
                           isActive
@@ -147,16 +122,20 @@ export function SiteHeader({ brand, navItems }: SiteHeaderProps) {
                           aria-hidden="true"
                         />
                         {item.label}
-                      </a>
+                      </Link>
                     </li>
                   );
                 })}
               </ul>
             </nav>
 
+            <div className="hidden lg:block">
+              <ThemeToggle />
+            </div>
+
             <button
               type="button"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-olive/10 bg-white/80 text-brand-ink lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-olive/10 bg-brand-surface/80 text-brand-ink lg:hidden"
               aria-label="Buka menu"
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"

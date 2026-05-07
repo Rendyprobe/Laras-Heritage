@@ -24,13 +24,13 @@ type ButtonAsButton = CommonProps &
 
 const variantClasses = {
   primary:
-    "bg-brand-olive text-white hover:-translate-y-0.5 hover:bg-[#274032] shadow-[0_22px_40px_-24px_rgba(47,74,59,0.8)]",
+    "bg-brand-olive text-white hover:-translate-y-0.5 hover:bg-[var(--brand-olive-hover)] shadow-[0_22px_40px_-24px_rgba(47,74,59,0.8)]",
   secondary:
-    "border border-brand-olive/15 bg-white/80 text-brand-ink hover:-translate-y-0.5 hover:border-brand-olive/30 hover:bg-white",
+    "border border-brand-olive/15 bg-brand-surface/80 text-brand-ink hover:-translate-y-0.5 hover:border-brand-olive/30 hover:bg-brand-surface",
   ghost:
     "bg-transparent text-brand-ink hover:bg-brand-olive/[0.06]",
   accent:
-    "bg-brand-gold text-brand-ink hover:-translate-y-0.5 hover:bg-[#d2b17c] shadow-[0_22px_40px_-24px_rgba(199,164,106,0.72)]",
+    "bg-brand-gold text-brand-ink hover:-translate-y-0.5 hover:bg-[var(--brand-gold-hover)] shadow-[0_22px_40px_-24px_rgba(199,164,106,0.72)]",
   shopee:
     "bg-[#ee4d2d] text-white hover:-translate-y-0.5 hover:bg-[#d93f20] shadow-[0_22px_40px_-24px_rgba(238,77,45,0.8)]",
 } as const;

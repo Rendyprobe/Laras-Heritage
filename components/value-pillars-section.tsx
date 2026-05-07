@@ -29,15 +29,22 @@ export function ValuePillarsSection({ pillars }: ValuePillarsSectionProps) {
             return (
               <SurfaceCard
                 key={pillar.title}
+                data-reveal-delay={String((index % 4) + 1)}
                 className="flex h-full flex-col p-6 hover:-translate-y-1 hover:border-brand-olive/18"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-cream text-brand-olive">
                   <Icon className="h-5 w-5" aria-hidden="true" />
                 </div>
-                <h3 className="mt-5 text-2xl font-semibold leading-tight text-brand-ink">
+                <h3
+                  data-reveal-text="1"
+                  className="mt-5 text-2xl font-semibold leading-tight text-brand-ink"
+                >
                   {pillar.title}
                 </h3>
-                <p className="mt-3 text-sm leading-7 text-brand-ink/72">
+                <p
+                  data-reveal-text="2"
+                  className="mt-3 text-sm leading-7 text-brand-ink/72"
+                >
                   {pillar.description}
                 </p>
               </SurfaceCard>

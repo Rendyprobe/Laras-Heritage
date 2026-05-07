@@ -34,19 +34,32 @@ export function BenefitsSection({ rituals }: BenefitsSectionProps) {
             const Icon = icons[index % icons.length];
 
             return (
-              <SurfaceCard key={ritual.title} className="p-7">
+              <SurfaceCard
+                key={ritual.title}
+                data-reveal-delay={String(index + 1)}
+                className="p-7"
+              >
                 <div className="flex items-center gap-3">
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-cream text-brand-olive">
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </div>
-                  <span className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-ink/52">
+                  <span
+                    data-reveal-text="1"
+                    className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-ink/52"
+                  >
                     {ritual.label}
                   </span>
                 </div>
-                <h3 className="mt-6 text-display text-4xl font-semibold leading-none text-brand-ink">
+                <h3
+                  data-reveal-text="2"
+                  className="mt-6 text-display text-4xl font-semibold leading-none text-brand-ink"
+                >
                   {ritual.title}
                 </h3>
-                <p className="mt-4 text-base leading-8 text-brand-ink/74">
+                <p
+                  data-reveal-text="3"
+                  className="mt-4 text-base leading-8 text-brand-ink/74"
+                >
                   {ritual.description}
                 </p>
               </SurfaceCard>

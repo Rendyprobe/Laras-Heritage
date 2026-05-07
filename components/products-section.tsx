@@ -9,17 +9,18 @@ import { SurfaceCard } from "./ui/surface-card";
 
 type ProductsSectionProps = {
   products: readonly Product[];
+  showHeading?: boolean;
 };
 
 const toneStyles = {
   gold:
-    "from-brand-gold/24 via-white/75 to-brand-cream/55 border-brand-gold/24",
+    "from-brand-gold/24 via-brand-surface/75 to-brand-cream/55 border-brand-gold/24",
   sage:
-    "from-brand-sage/18 via-white/75 to-brand-leaf/55 border-brand-sage/24",
+    "from-brand-sage/18 via-brand-surface/75 to-brand-leaf/55 border-brand-sage/24",
   clay:
-    "from-brand-clay/20 via-white/75 to-brand-cream/45 border-brand-clay/24",
+    "from-brand-clay/20 via-brand-surface/75 to-brand-cream/45 border-brand-clay/24",
   olive:
-    "from-brand-olive/16 via-white/76 to-brand-leaf/45 border-brand-olive/24",
+    "from-brand-olive/16 via-brand-surface/76 to-brand-leaf/45 border-brand-olive/24",
 } as const;
 
 function ShopeeMark() {
@@ -52,31 +53,37 @@ function ShopeeMark() {
   );
 }
 
-export function ProductsSection({ products }: ProductsSectionProps) {
+export function ProductsSection({
+  products,
+  showHeading = true,
+}: ProductsSectionProps) {
   return (
     <section
       id="products"
       className="section-anchor relative pb-10 pt-8 md:pb-12 md:pt-10"
     >
       <Container>
-        <SectionHeading
-          eyebrow="Varian Rasa"
-          title="Empat rasa Laras Heritage yang siap dipesan."
-          description="Pilih varian jamu sesuai selera: hangat, segar, herbal madu citrus, atau beras kencur caramel."
-        />
+        {showHeading ? (
+          <SectionHeading
+            eyebrow="Varian Rasa"
+            title="Empat rasa Laras Heritage yang siap dipesan."
+            description="Pilih varian jamu sesuai selera: hangat, segar, herbal madu citrus, atau beras kencur caramel."
+          />
+        ) : null}
 
-        <div className="mt-8 grid gap-5 xl:grid-cols-2">
-          {products.map((product) => (
+        <div className={cn(showHeading && "mt-8", "grid gap-5 xl:grid-cols-2")}>
+          {products.map((product, index) => (
             <SurfaceCard
               key={product.name}
+              data-reveal-delay={String((index % 2) + 1)}
               className={cn(
                 "overflow-hidden bg-gradient-to-br p-0",
                 toneStyles[product.tone],
               )}
             >
               <div className="relative overflow-hidden">
-                <div className="absolute -right-10 top-8 h-28 w-28 rounded-full bg-white/35 blur-2xl" />
-                <div className="relative aspect-[4/3] overflow-hidden border-b border-white/55 bg-white/54">
+                <div className="absolute -right-10 top-8 h-28 w-28 rounded-full bg-brand-surface/35 blur-2xl" />
+                <div className="relative aspect-[4/3] overflow-hidden border-b border-brand-surface/55 bg-brand-surface/54">
                   <Image
                     src={product.imageSrc}
                     alt={product.imageAlt}
@@ -87,28 +94,43 @@ export function ProductsSection({ products }: ProductsSectionProps) {
                 </div>
 
                 <div className="relative p-7 md:p-8">
-                  <span className="inline-flex rounded-full border border-white/60 bg-white/70 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-brand-ink/60">
+                  <span
+                    data-reveal-text="1"
+                    className="inline-flex rounded-full border border-brand-surface/60 bg-brand-surface/70 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-brand-ink/60"
+                  >
                     {product.label}
                   </span>
-                  <h3 className="mt-5 text-display text-4xl font-semibold leading-none text-brand-ink">
+                  <h3
+                    data-reveal-text="2"
+                    className="mt-5 text-display text-4xl font-semibold leading-none text-brand-ink"
+                  >
                     {product.name}
                   </h3>
-                  <p className="mt-4 text-base leading-8 text-brand-ink/74">
+                  <p
+                    data-reveal-text="3"
+                    className="mt-4 text-base leading-8 text-brand-ink/74"
+                  >
                     {product.description}
                   </p>
 
-                  <div className="mt-8 flex flex-wrap gap-2">
+                  <div
+                    data-reveal-text="4"
+                    className="mt-8 flex flex-wrap gap-2"
+                  >
                     {product.ingredients.map((ingredient) => (
                       <span
                         key={ingredient}
-                        className="inline-flex rounded-full border border-brand-olive/10 bg-white/68 px-3 py-2 text-xs font-medium uppercase tracking-[0.16em] text-brand-ink/72"
+                        className="inline-flex rounded-full border border-brand-olive/10 bg-brand-surface/68 px-3 py-2 text-xs font-medium uppercase tracking-[0.16em] text-brand-ink/72"
                       >
                         {ingredient}
                       </span>
                     ))}
                   </div>
 
-                  <div className="mt-6 flex flex-wrap gap-2">
+                  <div
+                    data-reveal-text="5"
+                    className="mt-6 flex flex-wrap gap-2"
+                  >
                     {product.benefits.map((benefit) => (
                       <span
                         key={benefit}

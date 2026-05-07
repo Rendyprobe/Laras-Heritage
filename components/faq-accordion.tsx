@@ -24,7 +24,9 @@ export function FaqAccordion({ faqs }: FaqAccordionProps) {
         return (
           <div
             key={faq.question}
-            className="overflow-hidden rounded-[24px] border border-brand-olive/10 bg-white/76 shadow-[0_18px_40px_-30px_rgba(35,50,44,0.28)]"
+            data-reveal="fade-up"
+            data-reveal-delay={String((index % 4) + 1)}
+            className="overflow-hidden rounded-[24px] border border-brand-olive/10 bg-brand-surface/76 shadow-[0_18px_40px_-30px_rgba(35,50,44,0.28)]"
           >
             <button
               id={buttonId}
@@ -34,7 +36,10 @@ export function FaqAccordion({ faqs }: FaqAccordionProps) {
               aria-controls={panelId}
               onClick={() => setOpenIndex(isOpen ? -1 : index)}
             >
-              <span className="pr-6 text-lg font-semibold leading-7 text-brand-ink">
+              <span
+                data-reveal-text="1"
+                className="pr-6 text-lg font-semibold leading-7 text-brand-ink"
+              >
                 {faq.question}
               </span>
               <span

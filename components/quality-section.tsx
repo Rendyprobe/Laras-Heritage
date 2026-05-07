@@ -33,12 +33,23 @@ export function QualitySection({ quality }: QualitySectionProps) {
               description={quality.description}
             />
             <div className="mt-8 grid gap-4 md:grid-cols-3 xl:grid-cols-1">
-              {quality.stats.map((stat) => (
-                <SurfaceCard key={stat.label} tone="muted" className="p-5">
-                  <p className="text-display text-4xl font-semibold leading-none text-brand-olive">
+              {quality.stats.map((stat, index) => (
+                <SurfaceCard
+                  key={stat.label}
+                  tone="muted"
+                  data-reveal-delay={String((index % 3) + 1)}
+                  className="p-5"
+                >
+                  <p
+                    data-reveal-text="1"
+                    className="text-display text-4xl font-semibold leading-none text-brand-olive"
+                  >
                     {stat.value}
                   </p>
-                  <p className="mt-3 text-sm uppercase tracking-[0.18em] text-brand-ink/52">
+                  <p
+                    data-reveal-text="2"
+                    className="mt-3 text-sm uppercase tracking-[0.18em] text-brand-ink/52"
+                  >
                     {stat.label}
                   </p>
                 </SurfaceCard>
@@ -51,14 +62,24 @@ export function QualitySection({ quality }: QualitySectionProps) {
               const Icon = icons[index % icons.length];
 
               return (
-                <SurfaceCard key={step.title} className="p-6">
+                <SurfaceCard
+                  key={step.title}
+                  data-reveal-delay={String((index % 4) + 1)}
+                  className="p-6"
+                >
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-leaf text-brand-olive">
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </div>
-                  <h3 className="mt-5 text-2xl font-semibold leading-tight text-brand-ink">
+                  <h3
+                    data-reveal-text="1"
+                    className="mt-5 text-2xl font-semibold leading-tight text-brand-ink"
+                  >
                     {step.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-7 text-brand-ink/72">
+                  <p
+                    data-reveal-text="2"
+                    className="mt-3 text-sm leading-7 text-brand-ink/72"
+                  >
                     {step.description}
                   </p>
                 </SurfaceCard>

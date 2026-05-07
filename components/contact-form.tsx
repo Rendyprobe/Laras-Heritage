@@ -72,28 +72,28 @@ export function ContactForm({ whatsappLink }: ContactFormProps) {
   return (
     <form onSubmit={handleSubmit} noValidate className="grid gap-5">
       <div className="grid gap-5 md:grid-cols-2">
-        <label className="grid gap-2">
+        <label data-reveal-text="1" className="grid gap-2">
           <span className="text-sm font-semibold text-brand-ink">Nama</span>
           <input
             type="text"
             value={values.name}
             onChange={handleChange("name")}
-            className="h-12 rounded-2xl border border-brand-olive/12 bg-white px-4 text-sm text-brand-ink placeholder:text-brand-ink/35"
+            className="h-12 rounded-2xl border border-brand-olive/12 bg-brand-surface px-4 text-sm text-brand-ink placeholder:text-brand-ink/35"
             placeholder="Nama lengkap Anda"
           />
           {errors.name ? (
-            <span className="text-sm text-[#A04E45]">{errors.name}</span>
+            <span className="text-sm text-brand-danger">{errors.name}</span>
           ) : null}
         </label>
 
-        <label className="grid gap-2">
+        <label data-reveal-text="2" className="grid gap-2">
           <span className="text-sm font-semibold text-brand-ink">
             Tipe kebutuhan
           </span>
           <select
             value={values.interest}
             onChange={handleChange("interest")}
-            className="h-12 rounded-2xl border border-brand-olive/12 bg-white px-4 text-sm text-brand-ink"
+            className="h-12 rounded-2xl border border-brand-olive/12 bg-brand-surface px-4 text-sm text-brand-ink"
           >
             <option>Info Produk</option>
             <option>Reseller</option>
@@ -102,21 +102,24 @@ export function ContactForm({ whatsappLink }: ContactFormProps) {
         </label>
       </div>
 
-      <label className="grid gap-2">
+      <label data-reveal-text="3" className="grid gap-2">
         <span className="text-sm font-semibold text-brand-ink">Pesan</span>
         <textarea
           value={values.message}
           onChange={handleChange("message")}
           rows={6}
-          className="rounded-[24px] border border-brand-olive/12 bg-white px-4 py-4 text-sm leading-7 text-brand-ink placeholder:text-brand-ink/35"
+          className="rounded-[24px] border border-brand-olive/12 bg-brand-surface px-4 py-4 text-sm leading-7 text-brand-ink placeholder:text-brand-ink/35"
           placeholder="Ceritakan kebutuhan Anda, produk yang ingin diketahui, atau bentuk kemitraan yang ingin didiskusikan."
         />
         {errors.message ? (
-          <span className="text-sm text-[#A04E45]">{errors.message}</span>
+          <span className="text-sm text-brand-danger">{errors.message}</span>
         ) : null}
       </label>
 
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div
+        data-reveal-text="4"
+        className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+      >
         <p className="text-sm leading-7 text-brand-ink/65">
           Pesan akan terbuka di WhatsApp dengan isi yang sudah tersusun.
         </p>
